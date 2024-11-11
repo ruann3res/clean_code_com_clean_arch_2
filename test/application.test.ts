@@ -1,11 +1,11 @@
-import { AccountService } from "../src/application";
+import AccountService, { AccountServiceProduction } from "../src/application";
 import { AccountDAOMemory } from "../src/resource";
 
 let accountService: AccountService;
 
 beforeEach(() => {
   const accountDAO = new AccountDAOMemory();
-  accountService = new AccountService(accountDAO);
+  accountService = new AccountServiceProduction(accountDAO);
 });
 
 test("Não deve criar uma conta para o passageiro com nome invalido", async function () {

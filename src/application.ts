@@ -1,10 +1,12 @@
 import crypto from "crypto";
-import pgp from "pg-promise";
 import { validateCpf } from "./validateCPF";
-
 import AccountDAO from "./resource";
 
-export class AccountService {
+export default interface AccountService {
+  signup(input: any): Promise<any>;
+  getUserById(accountId: any): Promise<any>;
+}
+export class AccountServiceProduction implements AccountService {
   accountDAO: AccountDAO;
 
   constructor(accountDAO: AccountDAO) {
